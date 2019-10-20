@@ -1,12 +1,18 @@
 .carousel {
     padding: 81px 0;
+    display: flex;
+    justify-content: center;
     &__inner {
         position: relative;
         width: 750px;
         margin: 0 auto;
+        img {
+            display: block;
+            margin: 0 auto;
+        }
         
     }
-    .slick-prev, .slick-next {
+    .prev, .next {
         width: 31px;
         height: 50px;
         position: absolute;
@@ -17,11 +23,11 @@
         margin-left: -66px;
     
     }
-    .slick-next {
+    .next {
         left: auto;
         right: -66px;
     }
-    .slick-dots {
+    /* .slick-dots {
         display: flex;
         justify-content: center;
         li {
@@ -29,5 +35,48 @@
             margin: 0 5px;
         }
         
+    } */
+    .tns-nav{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 10px;
+        button {
+            background-color:none;
+            height: 10px;
+            margin: 0 5px;
+        }
+        &-active {
+            background-color: red;
+        }
     }
+}
+@media (max-width: 1200px) {
+    .carousel {
+        padding: 81px 0 0 0;
+        .prev {
+            margin-left: -26px;
+        
+        }
+        .next {
+            right: 0;
+        }
+    }
+}
+@media (max-width: 970px) {
+    .carousel {
+        .prev, .next {
+            display: none;
+        }
+    }
+}
+@media (max-width: 760px){
+    .carousel {
+        &__inner {
+            img {
+                width: 100%;
+            }
+        }
+    }
+    
 }
