@@ -17,7 +17,7 @@
   //});
 
   //slider
-$(document).ready(function(){
+  $(document).ready(function(){
     const slider = tns({
         container: '.carousel__inner',
         items: 1,
@@ -84,6 +84,69 @@ $(document).ready(function(){
             $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
         });
     });
+
+    //Валидация форм с помощью плагина jquery-validate
+    
+    //валидация одной формы
+    /* $('#consultation form').validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 2
+            },
+            phone: "required",
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            name: {
+                required: "Пожалуйста, введите Ваше имя",
+                minlength: jQuery.validator.format("Введите не меньше {0} символов")
+            },
+            phone: "Пожалуйста, введите свой телефон",
+            email: {
+              required: "Пожалуйста, введите свой e-mail",
+              email: "Ваш email должен быть в формате: name@domain.com"
+            }
+        }
+    }); */
+
+    //функция валидации нескольких форм, для упрощения кода
+    function validateForms(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите Ваше имя",
+                    minlength: jQuery.validator.format("Введите не меньше {0} символов")
+                },
+                phone: "Пожалуйста, введите свой телефон",
+                email: {
+                  required: "Пожалуйста, введите свой e-mail",
+                  email: "Ваш email должен быть в формате: name@domain.com"
+                }
+            }
+        });
+    }
+      
+    validateForms('#consultation-form');
+    validateForms('#consultation form');
+    validateForms('#order form');
+
+    //маска ввода номера
+    $('input[name=phone]').mask("+38 (999) 999-99-99");
 
 });
   
